@@ -1,0 +1,49 @@
+/* Custom CSS for form alignment */
+.custom-form {
+  max-width: 400px; /* Adjust the maximum width as needed */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+.custom-form .form-group {
+  margin-bottom: 20px; /* Increase the margin between form groups */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Align form elements vertically */
+}
+
+.custom-form label {
+  flex: 1; /* Allow labels to grow and take up available space */
+  font-weight: bold;
+  text-align: left; /* Align the label text to the left */
+  margin-right: 15px; /* Add spacing between label and input */
+}
+
+.custom-form input[type="text"],
+.custom-form select {
+  flex: 2; /* Allow input fields to grow and take up available space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.custom-form input[type="checkbox"] {
+  flex: 0; /* Prevent checkboxes from growing, keeping them left-aligned */
+  margin-top: 0; /* Adjust the top margin for checkboxes */
+}
+
+.custom-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; /* Adjust font size for the button */
+}
+
+/* Style placeholder text */
+.custom-form input[type="text"]::placeholder,
+.custom-form select::placeholder {
+  font-style: italic;
+  opacity: 0.7; /* Adjust opacity as needed */
+}

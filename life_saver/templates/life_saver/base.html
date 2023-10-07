@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Page Title</title>
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    
+</head>
+<body>
+    <div id="header">
+        <!-- Header content goes here -->
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        <!-- Footer content goes here -->
+    </div>
+   
+</body>
+</html>
+
+

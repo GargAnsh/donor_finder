@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donor Info List</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        li {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Donor Info List</h1>
+    <ul>
+        {% for donor in donors %}
+            <li>
+                <h2>{{ donor.name }}</h2>
+                <p>Date of Birth: {{ donor.dob }}</p>
+                <p>Mobile Number: {{ donor.mobile_number }}</p>
+                <p>Email: {{ donor.email }}</p>
+                <p>Blood Group: {{ donor.blood_group }}</p>
+                <p>Donated Blood: {{ donor.blood_group_donated }}</p>
+                <p>Geo Location: {{ donor.geo_location }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

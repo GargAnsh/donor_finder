@@ -1,0 +1,27 @@
+<!-- life_saver/templates/life_saver/donor_finder.html -->
+
+{% extends "life_saver/base.html" %}
+
+
+{% block content %}
+    <h2>Find Donors by Blood Group</h2>
+    <form method="get" action="{% url 'donor_finder' %}">
+        <label for="{{ form.blood_group.id_for_label }}">Blood Group:</label>
+        {{ form.blood_group }}
+        <button type="submit">Search Donors</button>
+    </form>
+    
+
+
+    {% if donors %}
+        <h3>Matching Donors:</h3>
+        <ul>
+            {% for donor in donors %}
+                <li>{{ donor.name }} - {{ donor.blood_group }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching donors found.</p>
+    {% endif %}
+
+{% endblock %}

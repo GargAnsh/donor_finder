@@ -1,0 +1,13 @@
+<!-- life_saver/templates/life_saver/donor_update_form.html -->
+
+{% extends "life_saver/base.html" %}
+
+{% block content %}
+  <h2>Edit Donor Information</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+  <a href="{% url 'donor_info_list' %}">Back to Donor List</a>
+{% endblock %}

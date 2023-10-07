@@ -1,0 +1,143 @@
+<!-- life_saver/templates/life_saver/donor_add_form.html -->
+
+{% extends "life_saver/base.html" %}
+
+{% block content %}
+  <h2>Donor Registration</h2>
+  <form method="post" class="custom-form" accept-charset="UTF-8">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="{{ form.name.id_for_label }}">Name:</label>
+      <input type="text" name="name" required="" id="id_name" autocomplete="name">
+
+      {% if form.name.errors %}
+        <div class="error">{{ form.name.errors }}</div>
+      {% endif %}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.dob.id_for_label }}">Date of Birth:</label>
+      <input type="text" name="dob" required="" id="id_dob" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+      {% if form.dob.errors %}
+        <div class="error">{{ form.dob.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.mobile_number.id_for_label }}">Mobile Number:</label>
+      <input type="text" name="mobile_number" required="" id="id_mobile_number">
+      {% if form.mobile_number.errors %}
+        <div class="error">{{ form.mobile_number.errors }}</div>
+      {% endif %}
+    </div>
+
+
+
+<div class="form-group">
+    <label for="{{ form.email.id_for_label }}">Email:</label>
+    <input type="email" name="email" required="" id="id_email" autocomplete="email">
+
+    {% if form.email.errors %}
+        <div class="error">{{ form.email.errors }}</div>
+    {% endif %}
+</div>
+
+
+
+    
+    <div class="form-group">
+      <label for="{{ form.blood_group.id_for_label }}">Blood Group:</label>
+      {{ form.blood_group }}
+      {% if form.blood_group.errors %}
+        <div class="error">{{ form.blood_group.errors }}</div>
+      {% endif %}
+    </div>
+    
+    <!-- Add "Location" field -->
+    <div class="form-group">
+      <label for="{{ form.geo_location.id_for_label }}">Location:</label>
+      <input type="text" name="geo_location" required="" id="id_geo_location">
+      {% if form.geo_location.errors %}
+        <div class="error">{{ form.geo_location.errors }}</div>
+      {% endif %}
+    </div>
+    
+    <!-- Add "Blood Group Donated" field 
+    <div class="form-group">
+      <label for="{{ form.blood_group_donated.id_for_label }}" class="checkbox-label">Blood Group Donated:</label>
+      {{ form.blood_group_donated }}
+      {% if form.blood_group_donated.errors %}
+        <div class="error">{{ form.blood_group_donated.errors }}</div>
+      {% endif %}
+    </div> -->
+   <!-- Add "Blood Donation Date" field -->
+
+   <div class="form-group">
+    <label for="id_blood_group_donated" class="checkbox-label">Blood Group Donated:</label>
+    {{ form.blood_group_donated }}
+    {% if form.blood_group_donated.errors %}
+      <div class="error">{{ form.blood_group_donated.errors }}</div>
+    {% endif %}
+  </div>
+
+    <!-- Add "Blood Donation Date" field -->
+ <div class="form-group">
+  <label for="{{ form.donation_date.id_for_label }}">Donation Date:</label>
+  <input type="text" name="donation_date" required="" id="id_donation_date" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+  {% if form.donation_date.errors %}
+    <div class="error">{{ form.donation_date.errors }}</div>
+  {% endif %}
+</div>
+
+
+<!-- add testing DOB
+
+<div class="form-group">
+  <label for="{{ form.dob.id_for_label }}">Date of Birth:</label>
+  <input type="text" name="dob" required="" id="id_dob" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+  {% if form.dob.errors %}
+    <div class="error">{{ form.dob.errors }}</div>
+  {% endif %}
+</div>
+-->
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+ <!-- <a href="{% url 'donor_info_list' %}" class="btn btn-default">Back to Donor List</a> -->
+
+
+<!--Script for date autofill-->
+<!--Script for date autofill-->
+<!--Script for date autofill-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bloodDonatedCheckbox = document.querySelector("#id_blood_group_donated");
+    const donationDateInput = document.querySelector("#id_donation_date");
+    const submitButton = document.querySelector("#submit-button");
+
+    if (bloodDonatedCheckbox && donationDateInput) {
+      bloodDonatedCheckbox.addEventListener("change", function () {
+        console.log("Checkbox changed!");
+        if (bloodDonatedCheckbox.checked) {
+          const currentDate = new Date();
+          const day = String(currentDate.getDate()).padStart(2, "0");
+          const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+          const year = currentDate.getFullYear();
+          const formattedDate = `${day}/${month}/${year}`;
+          donationDateInput.value = formattedDate;
+        } else {
+          donationDateInput.value = "";
+        }
+      });
+    }
+
+    
+  });
+</script>
+
+
+
+  {% endblock %}
+  
